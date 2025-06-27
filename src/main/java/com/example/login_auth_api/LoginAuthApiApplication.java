@@ -8,6 +8,7 @@ public class LoginAuthApiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LoginAuthApiApplication.class, args);
+		System.out.println("LoginAuthApiApplication started successfully]");
 	}
 
 }
