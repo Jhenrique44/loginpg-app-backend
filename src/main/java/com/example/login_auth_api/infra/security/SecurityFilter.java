@@ -1,4 +1,4 @@
-package com.example.login_auth_api.infra;
+package com.example.login_auth_api.infra.security;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -31,6 +31,7 @@ public class SecurityFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
     var token = this.recoverToken(request);
     var login = tokenService.validateToken(token);
+
     if (login != null) {
         User user = userRepository.findByEmail(login).orElseThrow(() -> new RuntimeException("User not found: " + login));
         var authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
@@ -40,7 +41,7 @@ public class SecurityFilter extends OncePerRequestFilter {
     }
     filterChain.doFilter(request, response);
     }
-
+ 
     private String recoverToken( HttpServletRequest request) { 
         var authHeader = request.getHeader("Authorization");
         if(authHeader == null)return null;

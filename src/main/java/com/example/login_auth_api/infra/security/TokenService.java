@@ -1,4 +1,4 @@
-package com.example.login_auth_api.infra;
+package com.example.login_auth_api.infra.security;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
