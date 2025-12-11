@@ -48,3 +48,7 @@ You must have:
 ```bash
 git clone https://github.com/Jhenrique44/loginpg-app-backend.git
 cd loginpg-app-backend
+```
+<img width="879" height="538" alt="image" src="https://github.com/user-attachments/assets/1add924b-c17f-475d-916e-4d70d4bc914c" />
+
+
