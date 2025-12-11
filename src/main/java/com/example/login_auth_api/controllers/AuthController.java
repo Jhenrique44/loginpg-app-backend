@@ -29,17 +29,13 @@ public class AuthController {
     private final TokenService tokenService;
 
     @PostMapping("/login")
-    // @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
     public ResponseEntity login(@RequestBody LoginRequestDTO body) {
-        User user = this.repository.findByEmail(body.email())
-                .orElseThrow(() -> new RuntimeException("User not found: "));
-
+        User user = this.repository.findByEmail(body.email()).orElseThrow(() -> new RuntimeException("User not found"));
         if (passwordEncoder.matches(body.password(), user.getPassword())) {
             String token = this.tokenService.generateToken(user);
             return ResponseEntity.ok(new ResponseDTO(user.getName(), token));
-        } else {
-            return ResponseEntity.badRequest().build();
         }
+        return ResponseEntity.badRequest().build();
     }
 
     @PostMapping("/register")
